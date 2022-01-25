@@ -1,0 +1,112 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    static Scanner num = new Scanner(System.in);
+    static int a, b;
+    static char operation;
+    static int result;
+
+    public static void main (String[] args) {
+        String g = num.nextLine();
+        char[] x = new char[20];
+        for (int i = 0; i < g.length(); i++) {
+            x[i] = g.charAt(i);
+            if (x[i] == '+') {
+                operation = '+';
+            }
+            if (x[i] == '-') {
+                operation = '-';
+            }
+            if (x[i] == '*') {
+                operation = '*';
+            }
+            if (x[i] == '/') {
+                operation = '/';
+            }
+        }
+        String xString = String.valueOf(x);
+        String[] tt = xString.split("[+-/*]");
+        String aa = tt[0];
+        String cc = tt[1];
+        String bb = cc.trim();
+        a = romanToNumber(aa);
+        b = romanToNumber(bb);
+
+        if (a < 0 && b < 0) {
+            result = 0 ;
+        } else {
+            result = calculated(a, b, operation);
+
+            String resultRoman = convertNumToRoman(result);
+            System.out.println(resultRoman);
+        }
+        a = Integer.parseInt(aa);
+        b = Integer.parseInt(bb);
+        result = calculated(a, b, operation);
+
+        System.out.println(result);
+    }
+
+    private static String convertNumToRoman (int number77) {
+        String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"
+        };
+        final String s = roman[number77];
+        return s;
+    }
+
+
+    private static int romanToNumber (String roman) {
+        if (roman.equals("I")) {
+            return 1;
+        } else if (roman.equals("II")) {
+            return 2;
+        } else if (roman.equals("III")) {
+            return 3;
+        } else if (roman.equals("IV")) {
+            return 4;
+        } else if (roman.equals("V")) {
+            return 5;
+        } else if (roman.equals("VI")) {
+            return 6;
+        } else if (roman.equals("VII")) {
+            return 7;
+        } else if (roman.equals("VIII")) {
+            return 8;
+        } else if (roman.equals("IX")) {
+            return 9;
+        } else if (roman.equals("X")) {
+            return 10;
+        }
+        return -1;
+    }
+
+    public static int calculated (int num1, int num2, char op) {
+
+        int result = 0;
+
+        if(num1 <= 10 && num2 <= 10) {
+            switch (op) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+            }
+        } else {
+            System.out.println("error");
+        }
+        return result;
+    }
+}
+
+
+
