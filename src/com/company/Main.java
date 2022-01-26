@@ -25,6 +25,7 @@ public class Main {
             if (x[i] == '/') {
                 operation = '/';
             }
+
         }
         String xString = String.valueOf(x);
         String[] tt = xString.split("[+-/*]");
